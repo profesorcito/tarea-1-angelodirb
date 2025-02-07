@@ -2,12 +2,17 @@
 
 using namespace std;
 
-// TODO: Implementar función para calcular la suma de los dígitos de un número
+// Implementar función para calcular la suma de los dígitos de un número
 int sumaDigitos(int n) {
-    // Completa esta función
+    int suma = 0;
+    while (n > 0) {
+        suma += n % 10; // Extrae el último dígito y lo suma
+        n /= 10; // Elimina el último dígito
+    }
+    return suma; // Faltaba esta línea
 }
 
-// TODO: Implementar la lógica para calcular la tarifa
+// Implementar la lógica para calcular la tarifa
 double calcularTarifa(int horas, int dia) {
     const double TARIFA_PRIMERA_HORA = 6.00;
     const double TARIFA_1_A_3 = 4.00;
@@ -24,24 +29,24 @@ double calcularTarifa(int horas, int dia) {
 
     double totalPagar = 0.0;
 
-    // TODO: Implementar la lógica para calcular la tarifa base
+    // Calcular la tarifa base
     if (horas == 1) {
-        // Completa aquí
+        totalPagar = TARIFA_PRIMERA_HORA;
     } else if (horas > 1 && horas <= 3) {
-        // Completa aquí
+        totalPagar = TARIFA_PRIMERA_HORA + (horas - 1) * TARIFA_1_A_3; // Corrige la suma
     } else if (horas > 3 && horas <= 5) {
-        // Completa aquí
+        totalPagar = TARIFA_PRIMERA_HORA + (2 * TARIFA_1_A_3) + ((horas - 3) * TARIFA_3_A_5); // Corrige la suma
     } else {
-        // Completa aquí
+        totalPagar = TARIFA_FIJA;
     }
 
-    // TODO: Aplicar incremento si es fin de semana
-    if (/* Completa esta condición */1) {
+    // Aplicar incremento si es fin de semana
+    if (dia == 6 || dia == 7) {
         totalPagar *= INCREMENTO_FIN_SEMANA;
     }
 
-    // TODO: Aplicar descuento si la suma de los dígitos es múltiplo de 3
-    if (/* Completa esta condición */1) {
+    // Aplicar descuento si la suma de los dígitos es múltiplo de 3
+    if (sumaDigitos(horas) % 3 == 0) {
         totalPagar *= DESCUENTO_DIGITOS;
     }
 
